@@ -7,6 +7,13 @@
 
 defined( 'ABSPATH' ) || exit;
 
+$is_installed = false;
+
+if ( function_exists( 'get_plugins' ) ) {
+	$all_plugins  = get_plugins();
+	$is_installed = ! empty( $all_plugins['woocommerce/woocommerce.php'] );
+}
+
 ?>
 
 <div class="notice notice-error">
@@ -17,7 +24,7 @@ defined( 'ABSPATH' ) || exit;
 		?>
 	</p>
 
-	<?php if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) && current_user_can( 'activate_plugin', 'woocommerce/woocommerce.php' ) ) : ?>
+	<?php if ( $is_installed && current_user_can( 'activate_plugin', 'woocommerce/woocommerce.php' ) ) : ?>
 		<p>
 			<a href="<?php echo esc_url( wp_nonce_url( self_admin_url( 'plugins.php?action=activate&plugin=woocommerce/woocommerce.php&plugin_status=active' ), 'activate-plugin_woocommerce/woocommerce.php' ) ); ?>" class="button button-primary"><?php esc_html_e( 'Activate WooCommerce', 'woocommerce-beta-tester' ); ?></a>
 			<?php if ( current_user_can( 'deactivate_plugin', 'woocommerce-beta-tester/woocommerce-beta-tester.php' ) ) : ?>
