@@ -53,7 +53,6 @@
     ]
   },
   "woorelease": {
-    "svn_reauth": "true",
     "wp_org_slug": "woocommerce-beta-tester"
   }
 }
