@@ -141,10 +141,10 @@ class WC_Beta_Tester_Version_Picker {
 		foreach ( $tags as $tag_version ) {
 
 			$versions_html .= '<li class="wcbt-version-li">';
-			$versions_html .= '<label><input type="radio" ' . checked( $tag_version, $this->current_version, false ) . ' value="' . esc_attr( $tag_version ) . '" name="wcbt_switch_to_version">' . $tag_version;
+			$versions_html .= '<label><input type="radio" ' . checked( strtolower($tag_version), strtolower($this->current_version), false ) . ' value="' . esc_attr( $tag_version ) . '" name="wcbt_switch_to_version">' . $tag_version;
 
 			// Is this the current version?
-			if ( $tag_version === $this->current_version ) {
+			if ( strcasecmp($tag_version, $this->current_version) === 0 ) {
 				$versions_html .= '<span class="wcbt-current-version">' . esc_html__( '&nbsp;Installed Version', 'woocommerce-beta-tester' ) . '</span>';
 			}
 
