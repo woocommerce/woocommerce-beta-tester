@@ -145,7 +145,7 @@ class WC_Beta_Tester_Version_Picker {
 
 			// Is this the current version?
 			if ( strcasecmp($tag_version, $this->current_version) === 0 ) {
-				$versions_html .= '<span class="wcbt-current-version">' . esc_html__( '&nbsp;Installed Version', 'woocommerce-beta-tester' ) . '</span>';
+				$versions_html .= '<span class="wcbt-current-version"><strong>' . esc_html__( '&nbsp;Installed Version', 'woocommerce-beta-tester' ) . '</strong></span>';
 			}
 
 			$versions_html .= '</label>';
